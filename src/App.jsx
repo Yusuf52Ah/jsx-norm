@@ -27,10 +27,68 @@ export default function App() {
   const total = (product.price * count).toFixed(2);
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4">Xarid savatchasi</h1>
+    <>
+      <div className="max-w-3xl mx-auto p-6">
+        <h1 className="text-2xl font-semibold mb-4">Xarid savatchasi</h1>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div className="col-span-1">
+            <div className="relative rounded-lg overflow-hidden shadow-md">
+              <img
+                src={product.images[img]}
+                alt={product.title}
+                className="w-full h-64 object-cover"
+              />
+              <div className="absolute bottom-2 left-2 bg-black/50 text-white px-2 py-1 rounded">
+                {img + 1}/{product.images.length}
+              </div>
+            </div>
+          </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div className="md:col-span-2">
+            <div className="flex flex-col justify-between h-full">
+              <div>
+                <h2 className="text-xl font-bold">{product.title}</h2>
+                <p className="text-sm text-gray-600">Narx: ${product.price.toFixed(2)}</p>
+
+                <div className="mt-4 flex items-center gap-3">
+                  <button
+                    onClick={down}
+                    aria-label="down"
+                    className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+                  >
+                    −
+                  </button>
+
+                  <div className="w-12 text-center">{count}</div>
+
+                  <button
+                    onClick={up}
+                    aria-label="up"
+                    className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+                  >
+                    +
+                  </button>
+
+                  <div className="ml-4 text-sm text-gray-500">(Minimal miqdor: 1)</div>
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <div className="text-gray-600">Umumiy narx</div>
+                <div className="text-2xl font-semibold">${total}</div>
+              </div>
+
+              <div className="mt-4 flex gap-3">
+                <button className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
+                  Savatga qo'shish
+                </button>
+                <button className="px-4 py-2 rounded border border-gray-300">Sotib olish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-">
         <div className="col-span-1">
           <div className="relative rounded-lg overflow-hidden shadow-md">
             <img
@@ -43,50 +101,7 @@ export default function App() {
             </div>
           </div>
         </div>
-
-        <div className="md:col-span-2">
-          <div className="flex flex-col justify-between h-full">
-            <div>
-              <h2 className="text-xl font-bold">{product.title}</h2>
-              <p className="text-sm text-gray-600">Narx: ${product.price.toFixed(2)}</p>
-
-              <div className="mt-4 flex items-center gap-3">
-                <button
-                  onClick={down}
-                  aria-label="down"
-                  className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
-                >
-                  −
-                </button>
-
-                <div className="w-12 text-center">{count}</div>
-
-                <button
-                  onClick={up}
-                  aria-label="up"
-                  className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
-                >
-                  +
-                </button>
-
-                <div className="ml-4 text-sm text-gray-500">(Minimal miqdor: 1)</div>
-              </div>
-            </div>
-
-            <div className="mt-6">
-              <div className="text-gray-600">Umumiy narx</div>
-              <div className="text-2xl font-semibold">${total}</div>
-            </div>
-
-            <div className="mt-4 flex gap-3">
-              <button className="px-4 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">
-                Savatga qo'shish
-              </button>
-              <button className="px-4 py-2 rounded border border-gray-300">Sotib olish</button>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+    </>
   );
 }
